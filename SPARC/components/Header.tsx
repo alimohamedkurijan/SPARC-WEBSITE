@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -29,15 +29,6 @@ export default function Header() {
             onClick={() => scrollToSection("hero")}
             className="flex items-center gap-3 group"
           >
-            <div className="relative w-12 h-12 group-hover:scale-105 transition-transform">
-              <Image
-                src="/images/Frame 435.png"
-                alt="SPARC Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
             <div className="flex flex-col transition-colors duration-300 text-foreground">
               <span className="text-xl font-bold tracking-tight">SPARC</span>
               <span className="text-[10px] text-club-orange uppercase tracking-wider font-semibold">Student Club</span>
@@ -58,14 +49,14 @@ export default function Header() {
             >
               About
             </button>
-            <button
-              onClick={() => scrollToSection("team")}
+            <Link
+              href="/games"
               className="px-4 py-2 text-sm font-medium rounded-lg transition-colors text-foreground/80 hover:text-[#C02026] hover:bg-[#CF8420]/10"
             >
-              Team
-            </button>
+              Games
+            </Link>
             <button
-              onClick={() => scrollToSection("team")}
+              onClick={() => scrollToSection("about")}
               className={cn(
                 "ml-2 px-5 py-2 text-sm font-semibold rounded-lg transition-all",
                 "bg-[#CF8420] hover:bg-[#CF8420]/90 text-white",
@@ -108,14 +99,15 @@ export default function Header() {
               >
                 About
               </button>
-              <button
-                onClick={() => scrollToSection("team")}
+              <Link
+                href="/games"
+                onClick={() => setMobileMenuOpen(false)}
                 className="text-left px-4 py-2 text-sm font-medium text-foreground/70 hover:text-[#C02026] hover:bg-[#CF8420]/10 rounded-lg transition-colors"
               >
-                Team
-              </button>
+                Games
+              </Link>
               <button
-                onClick={() => scrollToSection("team")}
+                onClick={() => scrollToSection("about")}
                 className="mt-2 mx-4 px-5 py-2.5 text-sm font-semibold bg-[#CF8420] hover:bg-[#CF8420]/90 text-white rounded-lg transition-colors"
               >
                 Join Us

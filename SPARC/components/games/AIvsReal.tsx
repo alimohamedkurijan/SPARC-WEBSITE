@@ -1,0 +1,271 @@
+"use client";
+
+import { useMemo, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+
+// -----------------------------------------------------------------------------
+// AI vs Real — round configuration
+// -----------------------------------------------------------------------------
+// Add your video clips here. For each clip:
+//   - `src`   : path to the video. Put files in `public/videos/ai-vs-real/`
+//               and reference them as "/videos/ai-vs-real/yourfile.mp4".
+//               A full remote URL (https://...) also works.
+//   - `isAI`  : true if the clip is AI-generated, false if it's a real video.
+//
+// The game shows 8 clips and the player must get at least 6 right to win.
+// Add at least 8 entries below (extra entries are fine — 8 are picked at random
+// each play).
+// -----------------------------------------------------------------------------
+
+export interface Round {
+  src: string;
+  isAI: boolean;
+}
+
+// Clip pool. 8 are chosen at random each play.
+//   AI  = OpenAI Sora text-to-video showcase clips (genuinely AI-generated).
+//   REAL = Pexels stock footage (free license, real camera footage).
+// These load from remote CDNs, so an internet connection is required. Swap in
+// your own clips anytime — see public/videos/ai-vs-real/README.md.
+export const rounds: Round[] = [
+  // --- AI-generated (OpenAI Sora) ---
+  { src: "https://cdn.openai.com/sora/videos/octopus-and-crab.mp4", isAI: true },
+  { src: "https://cdn.openai.com/sora/videos/paper-airplanes.mp4", isAI: true },
+  { src: "https://cdn.openai.com/sora/videos/cat-on-bed.mp4", isAI: true },
+  { src: "https://cdn.openai.com/sora/videos/birds-over-river.mp4", isAI: true },
+  { src: "https://cdn.openai.com/sora/videos/wooly-mammoth.mp4", isAI: true },
+  { src: "https://cdn.openai.com/sora/videos/mitten-astronaut.mp4", isAI: true },
+  { src: "https://cdn.openai.com/sora/videos/big-sur.mp4", isAI: true },
+
+  // --- Real footage (Pexels) ---
+  { src: "https://videos.pexels.com/video-files/857195/857195-hd_1280_720_25fps.mp4", isAI: false },
+  { src: "https://videos.pexels.com/video-files/3571264/3571264-hd_1920_1080_30fps.mp4", isAI: false },
+  { src: "https://videos.pexels.com/video-files/2169880/2169880-hd_1920_1080_30fps.mp4", isAI: false },
+  { src: "https://videos.pexels.com/video-files/1409899/1409899-hd_1920_1080_25fps.mp4", isAI: false },
+  { src: "https://videos.pexels.com/video-files/3195394/3195394-uhd_3840_2160_25fps.mp4", isAI: false },
+  { src: "https://videos.pexels.com/video-files/4763824/4763824-hd_1920_1080_24fps.mp4", isAI: false },
+  { src: "https://videos.pexels.com/video-files/5752729/5752729-hd_1920_1080_30fps.mp4", isAI: false },
+  { src: "https://videos.pexels.com/video-files/6981411/6981411-hd_1920_1080_25fps.mp4", isAI: false },
+  { src: "https://videos.pexels.com/video-files/4114797/4114797-uhd_2560_1440_25fps.mp4", isAI: false },
+];
+
+const ROUNDS_PER_GAME = 8;
+const ROUNDS_TO_WIN = 6;
+
+type Answer = boolean; // true = player guessed "AI"
+
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+export default function AIvsReal() {
+  // Pick up to ROUNDS_PER_GAME clips at random for this play-through.
+  const [playRounds, setPlayRounds] = useState<Round[]>(() =>
+    shuffle(rounds).slice(0, ROUNDS_PER_GAME)
+  );
+  const [current, setCurrent] = useState(0);
+  const [score, setScore] = useState(0);
+  const [answered, setAnswered] = useState<Answer | null>(null);
+  const [finished, setFinished] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const total = playRounds.length;
+  const round = playRounds[current];
+  const needed = Math.min(ROUNDS_TO_WIN, total);
+
+  const lastWasCorrect = useMemo(() => {
+    if (answered === null || !round) return null;
+    return answered === round.isAI;
+  }, [answered, round]);
+
+  const handleGuess = (guessedAI: boolean) => {
+    if (answered !== null || !round) return;
+    setAnswered(guessedAI);
+    if (guessedAI === round.isAI) setScore((s) => s + 1);
+  };
+
+  const handleNext = () => {
+    if (current + 1 >= total) {
+      setFinished(true);
+      return;
+    }
+    setCurrent((c) => c + 1);
+    setAnswered(null);
+  };
+
+  const handleRestart = () => {
+    setPlayRounds(shuffle(rounds).slice(0, ROUNDS_PER_GAME));
+    setCurrent(0);
+    setScore(0);
+    setAnswered(null);
+    setFinished(false);
+  };
+
+  // No clips configured yet.
+  if (total === 0) {
+    return (
+      <div className="text-center py-12">
+        <div className="text-5xl mb-4">🎬</div>
+        <h3 className="text-xl font-bold text-foreground mb-2">
+          No clips added yet
+        </h3>
+        <p className="text-foreground/60 max-w-sm mx-auto">
+          Add video clips in{" "}
+          <code className="px-1 py-0.5 rounded bg-[#C02026]/10 text-[#C02026]">
+            components/games/AIvsReal.tsx
+          </code>{" "}
+          to start playing.
+        </p>
+      </div>
+    );
+  }
+
+  // Results screen.
+  if (finished) {
+    const won = score >= needed;
+    return (
+      <div className="text-center py-8">
+        <div className="text-6xl mb-4">{won ? "🏆" : "🤔"}</div>
+        <h3 className="text-2xl font-bold text-foreground mb-2">
+          {won ? "You win!" : "So close!"}
+        </h3>
+        <p className="text-lg text-foreground/70 mb-1">
+          You scored{" "}
+          <span className="font-bold text-[#C02026]">
+            {score} / {total}
+          </span>
+        </p>
+        <p className="text-sm text-foreground/50 mb-8">
+          {won
+            ? `You needed ${needed} to win — nicely spotted!`
+            : `You needed ${needed} to win. Give it another go!`}
+        </p>
+        <button
+          type="button"
+          onClick={handleRestart}
+          className={cn(
+            "px-8 py-3 text-base font-semibold rounded-lg text-white",
+            "bg-[#CF8420] hover:bg-[#CF8420]/90 hover:scale-105 active:scale-95",
+            "transition-all"
+          )}
+        >
+          Play Again
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-5">
+      {/* Progress bar */}
+      <div className="flex items-center justify-between text-sm">
+        <span className="font-semibold text-foreground">
+          Round {current + 1} of {total}
+        </span>
+        <span className="font-semibold text-[#C02026]">
+          Score: {score} · Need {needed} to win
+        </span>
+      </div>
+      <div className="h-2 w-full rounded-full bg-[#D9D9D9] overflow-hidden">
+        <div
+          className="h-full bg-[#CF8420] transition-all duration-300"
+          style={{ width: `${((current + (answered !== null ? 1 : 0)) / total) * 100}%` }}
+        />
+      </div>
+
+      {/* Video */}
+      <div className="relative rounded-xl overflow-hidden bg-black aspect-video">
+        <video
+          key={round.src}
+          ref={videoRef}
+          src={round.src}
+          className="w-full h-full object-contain"
+          controls
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      </div>
+
+      {/* Prompt */}
+      <p className="text-center text-lg font-semibold text-foreground">
+        Is this video <span className="text-[#CF8420]">AI-generated</span> or{" "}
+        <span className="text-[#C02026]">real</span>?
+      </p>
+
+      {/* Answer buttons */}
+      <div className="grid grid-cols-2 gap-4">
+        <button
+          type="button"
+          onClick={() => handleGuess(false)}
+          disabled={answered !== null}
+          className={cn(
+            "py-4 rounded-xl text-lg font-bold border-2 transition-all",
+            answered === null
+              ? "border-[#C02026] text-[#C02026] hover:bg-[#C02026] hover:text-white"
+              : round.isAI === false
+                ? "border-green-600 bg-green-600 text-white"
+                : answered === false
+                  ? "border-red-500 bg-red-500 text-white"
+                  : "border-foreground/15 text-foreground/40",
+            answered !== null && "cursor-default"
+          )}
+        >
+          Real
+        </button>
+        <button
+          type="button"
+          onClick={() => handleGuess(true)}
+          disabled={answered !== null}
+          className={cn(
+            "py-4 rounded-xl text-lg font-bold border-2 transition-all",
+            answered === null
+              ? "border-[#CF8420] text-[#CF8420] hover:bg-[#CF8420] hover:text-white"
+              : round.isAI === true
+                ? "border-green-600 bg-green-600 text-white"
+                : answered === true
+                  ? "border-red-500 bg-red-500 text-white"
+                  : "border-foreground/15 text-foreground/40",
+            answered !== null && "cursor-default"
+          )}
+        >
+          AI
+        </button>
+      </div>
+
+      {/* Feedback + next */}
+      {answered !== null && (
+        <div className="text-center space-y-3">
+          <p
+            className={cn(
+              "text-lg font-bold",
+              lastWasCorrect ? "text-green-600" : "text-red-500"
+            )}
+          >
+            {lastWasCorrect ? "Correct! 🎉" : "Not quite."}{" "}
+            <span className="font-normal text-foreground/70">
+              This one was {round.isAI ? "AI-generated" : "real"}.
+            </span>
+          </p>
+          <button
+            type="button"
+            onClick={handleNext}
+            className={cn(
+              "px-8 py-3 text-base font-semibold rounded-lg text-white",
+              "bg-[#C02026] hover:bg-[#C02026]/90 hover:scale-105 active:scale-95",
+              "transition-all"
+            )}
+          >
+            {current + 1 >= total ? "See Results" : "Next Round"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}

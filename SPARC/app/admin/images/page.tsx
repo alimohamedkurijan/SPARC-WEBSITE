@@ -53,13 +53,13 @@ export default function AdminImages() {
       if (files) {
         const imageList = files
           .filter((file: { name: string }) => file.name !== '.emptyFolderPlaceholder')
-          .map((file: { id: string; name: string; created_at: string; metadata: { size: number } }) => ({
+          .map((file: { id: string; name: string; created_at: string; metadata?: { size?: number } }) => ({
             id: file.id,
             name: file.name,
             url: supabase.storage.from('images').getPublicUrl(file.name).data.publicUrl,
             uploadedAt: file.created_at,
             category: 'other' as const,
-            size: `${(file.metadata.size / 1024 / 1024).toFixed(2)} MB`,
+            size: `${((file.metadata?.size ?? 0) / 1024 / 1024).toFixed(2)} MB`,
           }));
         setImages(imageList);
       }

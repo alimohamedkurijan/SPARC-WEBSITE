@@ -3,8 +3,8 @@
 import Hero from "@/components/Hero";
 import ProcessSection from "@/components/ProcessSection";
 import StatsSection from "@/components/StatsSection";
+import GamesSection from "@/components/GamesSection";
 import AboutSection from "@/components/AboutSection";
-import MeetTheTeam from "@/components/MeetTheTeam";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -21,8 +21,8 @@ export default function Home() {
       <Hero onJoinUsClick={handleJoinUsClick} />
       <ProcessSection />
       <StatsSection />
+      <GamesSection />
       <AboutSection />
-      <MeetTheTeam onJoinUsClick={handleJoinUsClick} />
       <Footer />
     </main>
   );

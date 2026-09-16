@@ -22,26 +22,38 @@ interface MeetTheTeamProps {
 }
 
 // Default team members as fallback
-const defaultTeamMembers = [
+const defaultTeamMembers: TeamMember[] = [
   {
+    id: "default-1",
     name: "Alex Johnson",
     role: "President",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+    display_order: 1,
+    is_active: true,
   },
   {
+    id: "default-2",
     name: "Sarah Chen",
     role: "Vice President",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+    display_order: 2,
+    is_active: true,
   },
   {
+    id: "default-3",
     name: "Michael Torres",
     role: "Treasurer",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
+    display_order: 3,
+    is_active: true,
   },
   {
+    id: "default-4",
     name: "Emily Rodriguez",
     role: "Secretary",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+    display_order: 4,
+    is_active: true,
   },
 ];
 

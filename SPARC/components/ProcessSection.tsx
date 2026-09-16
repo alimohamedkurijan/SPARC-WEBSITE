@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { supabase } from "@/lib/supabase";
+import { supabase, supabaseEnabled } from "@/lib/supabase";
 import Image from "next/image";
 
 interface Event {
@@ -26,6 +26,11 @@ export default function ProcessSection() {
 
   useEffect(() => {
     const fetchEvents = async () => {
+      if (!supabaseEnabled) {
+        setLoading(false);
+        return;
+      }
+
       const { data: events } = await supabase
         .from('events')
         .select('*')

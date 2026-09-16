@@ -4,11 +4,25 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Environment variables (add these to your .env.local file)
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+export const supabaseEnabled = Boolean(supabaseUrl && supabaseAnonKey);
 
 // Create Supabase client
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Use safe fallbacks so the app can boot without env configured.
+// Calls will fail at runtime if Supabase isn't configured.
+export const supabase = createClient(
+  supabaseUrl ?? 'http://localhost:54321',
+  supabaseAnonKey ?? 'anon-key'
+);
+
+if (!supabaseEnabled && process.env.NODE_ENV !== 'test') {
+  // eslint-disable-next-line no-console
+  console.warn(
+    '[supabase] Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY. Supabase features are disabled until you set .env.local.'
+  );
+}
 
 // Database Types (update these based on your Supabase schema)
 export interface Profile {
