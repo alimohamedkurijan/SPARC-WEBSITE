@@ -3,17 +3,26 @@
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const onHome = pathname === "/";
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  // When already on the homepage, smooth-scroll to the section. On any other
+  // page, let the Link navigate to "/#id" so the anchor still works.
+  const handleSectionClick =
+    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (onHome) {
+        const element = document.getElementById(id);
+        if (element) {
+          e.preventDefault();
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
       setMobileMenuOpen(false);
-    }
-  };
+    };
 
   return (
     <header
@@ -25,38 +34,43 @@ export default function Header() {
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <button
-            onClick={() => scrollToSection("hero")}
+          <Link
+            href="/#hero"
+            onClick={handleSectionClick("hero")}
             className="flex items-center gap-3 group"
           >
             <div className="flex flex-col transition-colors duration-300 text-foreground">
               <span className="text-xl font-bold tracking-tight">SPARC</span>
               <span className="text-[10px] text-club-orange uppercase tracking-wider font-semibold">Student Club</span>
             </div>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
-            <button
-              onClick={() => scrollToSection("hero")}
+            <Link
+              href="/#hero"
+              onClick={handleSectionClick("hero")}
               className="px-4 py-2 text-sm font-medium rounded-lg transition-colors text-foreground/80 hover:text-[#C02026] hover:bg-[#CF8420]/10"
             >
               Home
-            </button>
-            <button
-              onClick={() => scrollToSection("about")}
+            </Link>
+            <Link
+              href="/#about"
+              onClick={handleSectionClick("about")}
               className="px-4 py-2 text-sm font-medium rounded-lg transition-colors text-foreground/80 hover:text-[#C02026] hover:bg-[#CF8420]/10"
             >
               About
-            </button>
+            </Link>
             <Link
               href="/games"
+              onClick={() => setMobileMenuOpen(false)}
               className="px-4 py-2 text-sm font-medium rounded-lg transition-colors text-foreground/80 hover:text-[#C02026] hover:bg-[#CF8420]/10"
             >
               Games
             </Link>
-            <button
-              onClick={() => scrollToSection("about")}
+            <Link
+              href="/#about"
+              onClick={handleSectionClick("about")}
               className={cn(
                 "ml-2 px-5 py-2 text-sm font-semibold rounded-lg transition-all",
                 "bg-[#CF8420] hover:bg-[#CF8420]/90 text-white",
@@ -64,7 +78,7 @@ export default function Header() {
               )}
             >
               Join Us
-            </button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -87,18 +101,20 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden pb-4 border-t border-club-main/20 mt-4 pt-4">
             <nav className="flex flex-col gap-2">
-              <button
-                onClick={() => scrollToSection("hero")}
+              <Link
+                href="/#hero"
+                onClick={handleSectionClick("hero")}
                 className="text-left px-4 py-2 text-sm font-medium text-foreground/70 hover:text-[#C02026] hover:bg-[#CF8420]/10 rounded-lg transition-colors"
               >
                 Home
-              </button>
-              <button
-                onClick={() => scrollToSection("about")}
+              </Link>
+              <Link
+                href="/#about"
+                onClick={handleSectionClick("about")}
                 className="text-left px-4 py-2 text-sm font-medium text-foreground/70 hover:text-[#C02026] hover:bg-[#CF8420]/10 rounded-lg transition-colors"
               >
                 About
-              </button>
+              </Link>
               <Link
                 href="/games"
                 onClick={() => setMobileMenuOpen(false)}
@@ -106,12 +122,13 @@ export default function Header() {
               >
                 Games
               </Link>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="mt-2 mx-4 px-5 py-2.5 text-sm font-semibold bg-[#CF8420] hover:bg-[#CF8420]/90 text-white rounded-lg transition-colors"
+              <Link
+                href="/#about"
+                onClick={handleSectionClick("about")}
+                className="mt-2 mx-4 px-5 py-2.5 text-sm font-semibold bg-[#CF8420] hover:bg-[#CF8420]/90 text-white rounded-lg transition-colors text-center"
               >
                 Join Us
-              </button>
+              </Link>
             </nav>
           </div>
         )}

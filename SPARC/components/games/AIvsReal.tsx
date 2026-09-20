@@ -25,28 +25,28 @@ export interface Round {
 // Clip pool. 8 are chosen at random each play.
 //   AI  = OpenAI Sora text-to-video showcase clips (genuinely AI-generated).
 //   REAL = Pexels stock footage (free license, real camera footage).
-// These load from remote CDNs, so an internet connection is required. Swap in
-// your own clips anytime — see public/videos/ai-vs-real/README.md.
+// Files are served locally from public/videos/ai-vs-real/ (works offline).
+// Swap in your own clips anytime — see that folder's README.md.
 export const rounds: Round[] = [
   // --- AI-generated (OpenAI Sora) ---
-  { src: "https://cdn.openai.com/sora/videos/octopus-and-crab.mp4", isAI: true },
-  { src: "https://cdn.openai.com/sora/videos/paper-airplanes.mp4", isAI: true },
-  { src: "https://cdn.openai.com/sora/videos/cat-on-bed.mp4", isAI: true },
-  { src: "https://cdn.openai.com/sora/videos/birds-over-river.mp4", isAI: true },
-  { src: "https://cdn.openai.com/sora/videos/wooly-mammoth.mp4", isAI: true },
-  { src: "https://cdn.openai.com/sora/videos/mitten-astronaut.mp4", isAI: true },
-  { src: "https://cdn.openai.com/sora/videos/big-sur.mp4", isAI: true },
+  { src: "/videos/ai-vs-real/ai-octopus-and-crab.mp4", isAI: true },
+  { src: "/videos/ai-vs-real/ai-paper-airplanes.mp4", isAI: true },
+  { src: "/videos/ai-vs-real/ai-cat-on-bed.mp4", isAI: true },
+  { src: "/videos/ai-vs-real/ai-birds-over-river.mp4", isAI: true },
+  { src: "/videos/ai-vs-real/ai-wooly-mammoth.mp4", isAI: true },
+  { src: "/videos/ai-vs-real/ai-mitten-astronaut.mp4", isAI: true },
+  { src: "/videos/ai-vs-real/ai-big-sur.mp4", isAI: true },
 
   // --- Real footage (Pexels) ---
-  { src: "https://videos.pexels.com/video-files/857195/857195-hd_1280_720_25fps.mp4", isAI: false },
-  { src: "https://videos.pexels.com/video-files/3571264/3571264-hd_1920_1080_30fps.mp4", isAI: false },
-  { src: "https://videos.pexels.com/video-files/2169880/2169880-hd_1920_1080_30fps.mp4", isAI: false },
-  { src: "https://videos.pexels.com/video-files/1409899/1409899-hd_1920_1080_25fps.mp4", isAI: false },
-  { src: "https://videos.pexels.com/video-files/3195394/3195394-uhd_3840_2160_25fps.mp4", isAI: false },
-  { src: "https://videos.pexels.com/video-files/4763824/4763824-hd_1920_1080_24fps.mp4", isAI: false },
-  { src: "https://videos.pexels.com/video-files/5752729/5752729-hd_1920_1080_30fps.mp4", isAI: false },
-  { src: "https://videos.pexels.com/video-files/6981411/6981411-hd_1920_1080_25fps.mp4", isAI: false },
-  { src: "https://videos.pexels.com/video-files/4114797/4114797-uhd_2560_1440_25fps.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-857195.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-3571264.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-2169880.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-1409899.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-3195394.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-4763824.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-5752729.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-6981411.mp4", isAI: false },
+  { src: "/videos/ai-vs-real/real-4114797.mp4", isAI: false },
 ];
 
 const ROUNDS_PER_GAME = 8;

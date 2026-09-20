@@ -1,5 +1,7 @@
 import type { ComponentType } from "react";
 import AIvsReal from "@/components/games/AIvsReal";
+import RobotPath from "@/components/games/RobotPath";
+import CircuitConnect from "@/components/games/CircuitConnect";
 
 // Games registry
 // -----------------------------------------------------------------------------
@@ -32,5 +34,21 @@ export const games: Game[] = [
       "Watch a clip and decide: AI-generated or real footage? Get 6 of 8 right to win.",
     emoji: "🤖",
     component: AIvsReal,
+  },
+  {
+    slug: "robot-path",
+    title: "Robot Path",
+    description:
+      "Program a robot to reach the goal on a 16×16 grid. Queue moves, dodge walls, clear 5 levels.",
+    emoji: "🎯",
+    component: RobotPath,
+  },
+  {
+    slug: "circuit-connect",
+    title: "Circuit Connect",
+    description:
+      "Rotate the wires to route power from the battery to the goal. 5 levels, easy to hard.",
+    emoji: "⚡",
+    component: CircuitConnect,
   },
 ];

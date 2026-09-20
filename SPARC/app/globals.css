@@ -69,6 +69,8 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Offset anchor targets so they aren't hidden under the fixed 80px header */
+    scroll-padding-top: 6rem;
   }
 }
 
