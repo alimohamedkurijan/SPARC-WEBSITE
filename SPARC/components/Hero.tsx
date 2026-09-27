@@ -1,8 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-
 interface HeroProps {
   onJoinUsClick?: () => void;
 }
@@ -11,77 +8,68 @@ export default function Hero({ onJoinUsClick }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-        style={{
-          backgroundImage: "url('/images/Campaign-NOV2025-01 1.png')",
-        }}
-      />
+      {/* Neon grid floor */}
+      <div className="absolute inset-x-0 bottom-0 top-1/3 retro-grid z-0" />
+      {/* Glow blooms */}
+      <div className="absolute left-1/2 top-1/4 -translate-x-1/2 w-[70vw] h-[70vw] max-w-[720px] max-h-[720px] rounded-full bg-[#4f8cff]/10 blur-[120px] z-0" />
+      <div className="absolute right-[10%] top-1/3 w-[40vw] h-[40vw] max-w-[420px] max-h-[420px] rounded-full bg-[#22d3ee]/10 blur-[110px] z-0" />
 
-      {/* Overlay - Darker for better text visibility */}
-      <div className="absolute inset-0 bg-black/70 z-10" />
+      {/* Content */}
+      <div className="relative z-20 container mx-auto px-6 lg:px-8 py-12 text-center">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <span className="neo-chip px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] animate-float-slow">
+            ● SPARC Student Club
+          </span>
 
-      {/* Content - Centered */}
-      <div className="relative z-20 container mx-auto px-6 lg:px-8 py-12 md:py-16 text-center">
-        <div className="max-w-5xl mx-auto space-y-8">
-          {/* Main Headline - Bold & Impactful */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-tight drop-shadow-2xl">
-            Master{" "}
-            <span className="text-[#CF8420] drop-shadow-2xl">Robotics</span> &{" "}
-            <span className="text-[#CF8420] drop-shadow-2xl">Programming</span>
+          <h1 className="font-display font-extrabold tracking-tight leading-[1.05] text-5xl sm:text-6xl md:text-7xl">
+            <span className="block text-[#ffffff]">Master</span>
+            <span className="grad-text block text-glow">Robotics &amp; Code</span>
           </h1>
 
-          {/* Tagline */}
-          <p className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed font-light italic drop-shadow-lg">
-            Join SPARC - Where innovation meets hands-on learning
+          <p className="text-lg md:text-2xl text-[#ffffff]/75 max-w-2xl mx-auto leading-relaxed">
+            Where innovation meets hands-on learning. Build robots, write code,
+            and battle it out in our neon arcade.
           </p>
 
-          {/* CTA Button - Prominent */}
-          <div className="pt-6">
-            <Button
+          {/* CTAs */}
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
               onClick={onJoinUsClick}
-              size="lg"
-              className={cn(
-                "px-10 py-6 text-lg md:text-xl font-bold rounded-full",
-                "bg-[#CF8420] hover:bg-[#CF8420]/90 text-white",
-                "transition-all duration-300 hover:scale-110 shadow-2xl hover:shadow-[#CF8420]/50"
-              )}
+              className="neo-btn neo-btn-primary px-8 py-4 text-base md:text-lg w-full sm:w-auto"
             >
-              Join SPARC Today!
-            </Button>
+              Join SPARC Today
+            </button>
+            <a
+              href="/games"
+              className="neo-btn neo-btn-ghost px-8 py-4 text-base md:text-lg w-full sm:w-auto"
+            >
+              ▶ Play the Arcade
+            </a>
           </div>
 
-          {/* Supporting Points */}
-          <div className="pt-8 flex flex-wrap justify-center gap-6 md:gap-8 text-white text-base md:text-lg drop-shadow-lg">
-            <div className="flex items-center gap-2">
-              <svg className="w-6 h-6 text-[#CF8420]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Hands-On Projects</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-6 h-6 text-[#CF8420]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Industry Mentors</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-6 h-6 text-[#CF8420]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
-              <span>Competition Ready</span>
-            </div>
+          {/* Feature chips */}
+          <div className="pt-8 flex flex-wrap justify-center gap-3">
+            {["Hands-On Projects", "Industry Mentors", "Competition Ready"].map((t) => (
+              <span
+                key={t}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-[#ffffff]/80"
+              >
+                <svg className="w-4 h-4 text-[#22d3ee]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                {t}
+              </span>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
-        <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce text-[#ffffff]/50">
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>
     </section>

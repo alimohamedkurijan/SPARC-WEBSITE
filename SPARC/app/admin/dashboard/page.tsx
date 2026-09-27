@@ -63,14 +63,14 @@ export default function AdminDashboard() {
       description: "Create a new event for the club",
       icon: "📅",
       action: () => router.push("/admin/events/new"),
-      color: "bg-[#CF8420]",
+      color: "bg-[#22d3ee]",
     },
     {
       title: "Manage Users",
       description: "Assign admin roles and manage users",
       icon: "👥",
       action: () => router.push("/admin/users"),
-      color: "bg-[#C02026]",
+      color: "bg-[#4f8cff]",
     },
     {
       title: "Update Images",
@@ -105,7 +105,7 @@ export default function AdminDashboard() {
                 <p className="text-sm font-medium text-gray-600">Total Events</p>
                 <p className="text-3xl font-bold text-gray-900 mt-2">{stats.totalEvents}</p>
               </div>
-              <div className="w-12 h-12 bg-[#CF8420]/10 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#22d3ee]/10 rounded-lg flex items-center justify-center">
                 <span className="text-2xl">📅</span>
               </div>
             </div>
@@ -129,7 +129,7 @@ export default function AdminDashboard() {
                 <p className="text-sm font-medium text-gray-600">Total Users</p>
                 <p className="text-3xl font-bold text-gray-900 mt-2">{stats.totalUsers}</p>
               </div>
-              <div className="w-12 h-12 bg-[#C02026]/10 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#4f8cff]/10 rounded-lg flex items-center justify-center">
                 <span className="text-2xl">👥</span>
               </div>
             </div>

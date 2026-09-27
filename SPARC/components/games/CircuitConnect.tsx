@@ -311,8 +311,8 @@ export default function CircuitConnect() {
             className={cn(
               "px-3 py-1.5 text-xs font-semibold rounded-full border-2 transition-all",
               i === levelIndex
-                ? "border-[#C02026] bg-[#C02026] text-white"
-                : "border-[#C02026]/20 text-foreground/70 hover:border-[#CF8420]"
+                ? "border-[#4f8cff] bg-[#4f8cff] text-white"
+                : "border-[#4f8cff]/20 text-foreground/70 hover:border-[#22d3ee]"
             )}
           >
             {solved.has(i) ? "✓ " : ""}
@@ -352,7 +352,7 @@ export default function CircuitConnect() {
                 ? "bg-red-100 text-red-600"
                 : timeLeft <= 10
                   ? "bg-red-100 text-red-600 animate-pulse"
-                  : "bg-[#C02026]/10 text-[#C02026]"
+                  : "bg-[#4f8cff]/10 text-[#4f8cff]"
           )}
         >
           ⏱ {formatTime(timeLeft)}
@@ -370,7 +370,7 @@ export default function CircuitConnect() {
       {/* Board */}
       <div className="mx-auto w-full max-w-sm">
         <div
-          className="grid gap-1 rounded-xl bg-[#C02026]/5 p-2"
+          className="grid gap-1 rounded-xl bg-[#4f8cff]/5 p-2"
           style={{ gridTemplateColumns: `repeat(${level.cols}, minmax(0, 1fr))` }}
         >
           {tiles.map((row, r) =>
@@ -384,7 +384,7 @@ export default function CircuitConnect() {
                 );
               }
               const lit = powered.has(key(r, c));
-              const stroke = won && lit ? "#16a34a" : lit ? "#CF8420" : "#cbd5e1";
+              const stroke = won && lit ? "#16a34a" : lit ? "#22d3ee" : "#cbd5e1";
               return (
                 <button
                   key={key(r, c)}
@@ -393,8 +393,8 @@ export default function CircuitConnect() {
                   disabled={won || timedOut}
                   className={cn(
                     "relative aspect-square rounded-md bg-white border transition-colors",
-                    lit ? "border-[#CF8420]/40" : "border-black/10",
-                    !won && !timedOut && "hover:border-[#C02026]/50 active:scale-95",
+                    lit ? "border-[#22d3ee]/40" : "border-black/10",
+                    !won && !timedOut && "hover:border-[#4f8cff]/50 active:scale-95",
                     "disabled:cursor-default",
                     timedOut && "opacity-60"
                   )}
@@ -433,7 +433,7 @@ export default function CircuitConnect() {
       <div className="text-center space-y-3">
         <p className="text-sm font-semibold text-foreground/70">
           Goals connected:{" "}
-          <span className={cn(won ? "text-green-600" : "text-[#C02026]")}>
+          <span className={cn(won ? "text-green-600" : "text-[#4f8cff]")}>
             {connectedGoals} / {level.targets.length}
           </span>
           <span className="ml-3 font-normal text-foreground/50">
@@ -449,12 +449,12 @@ export default function CircuitConnect() {
               <button
                 type="button"
                 onClick={() => setLevelIndex(levelIndex + 1)}
-                className="px-6 py-2.5 text-sm font-semibold rounded-lg bg-[#CF8420] hover:bg-[#CF8420]/90 text-white hover:scale-105 active:scale-95 transition-all"
+                className="px-6 py-2.5 text-sm font-semibold rounded-lg bg-[#22d3ee] hover:bg-[#22d3ee]/90 text-[#06121f] hover:scale-105 active:scale-95 transition-all"
               >
                 Next Level →
               </button>
             ) : (
-              <p className="text-base font-bold text-[#C02026]">
+              <p className="text-base font-bold text-[#4f8cff]">
                 {allSolved
                   ? "🏆 Every circuit solved — brilliant work!"
                   : "Final circuit complete! 🎉"}
@@ -467,7 +467,7 @@ export default function CircuitConnect() {
             <button
               type="button"
               onClick={() => loadLevel(levelIndex)}
-              className="px-6 py-2.5 text-sm font-semibold rounded-lg bg-[#C02026] hover:bg-[#C02026]/90 text-white hover:scale-105 active:scale-95 transition-all"
+              className="px-6 py-2.5 text-sm font-semibold rounded-lg bg-[#4f8cff] hover:bg-[#4f8cff]/90 text-white hover:scale-105 active:scale-95 transition-all"
             >
               Try Again
             </button>
@@ -476,7 +476,7 @@ export default function CircuitConnect() {
           <button
             type="button"
             onClick={() => loadLevel(levelIndex)}
-            className="px-6 py-2.5 text-sm font-semibold rounded-lg border-2 border-[#C02026]/30 text-[#C02026] hover:bg-[#C02026]/5 transition-colors"
+            className="px-6 py-2.5 text-sm font-semibold rounded-lg border-2 border-[#4f8cff]/30 text-[#4f8cff] hover:bg-[#4f8cff]/5 transition-colors"
           >
             Shuffle
           </button>

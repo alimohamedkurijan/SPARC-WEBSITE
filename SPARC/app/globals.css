@@ -58,29 +58,168 @@
   }
 }
 
+/* =========================================================================
+   NEO-RETRO THEME — modern synthwave/arcade (club palette: red/orange/beige)
+   ========================================================================= */
+:root {
+  --bg-0: #0b111c;          /* cool dark navy */
+  --bg-1: #121a28;          /* raised surface */
+  --ink: #e9f1f7;           /* cool white text */
+  --ink-dim: #8ea3b5;       /* cool gray muted */
+  --cyan: #22d3ee;          /* primary neon */
+  --blue: #4f8cff;          /* secondary neon */
+  --violet: #a78bfa;        /* accent neon */
+  /* dark tokens kept for the arcade GAME screens */
+  --retro-panel: #0f1826;
+  --retro-ink: #e9f1f7;
+  --retro-black: #070c14;
+}
+
 @layer base {
-  * {
-    border-color: hsl(var(--border));
-  }
+  * { border-color: hsl(var(--border)); }
   body {
-    background-color: var(--bg-color);
-    color: hsl(var(--foreground));
-    font-feature-settings: "rlig" 1, "calt" 1;
+    color: var(--ink);
+    font-family: var(--font-body), system-ui, sans-serif;
+    background-color: var(--bg-0);
+    background-image:
+      radial-gradient(1000px 560px at 50% -12%, rgba(34, 211, 238, 0.06), transparent 62%),
+      radial-gradient(760px 480px at 92% 8%, rgba(79, 140, 255, 0.07), transparent 62%),
+      radial-gradient(760px 560px at 4% 96%, rgba(167, 139, 250, 0.05), transparent 62%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* subtle scanlines for retro flavor */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0 2px,
+      rgba(0, 0, 0, 0.08) 3px 3px
+    );
+    opacity: 0.6;
   }
   html {
     scroll-behavior: smooth;
-    /* Offset anchor targets so they aren't hidden under the fixed 80px header */
     scroll-padding-top: 6rem;
   }
 }
 
-/* Modern Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-feature-settings: "kern" 1, "liga" 1;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
+
+/* ---- fonts ---- */
+.font-display { font-family: var(--font-display), sans-serif; }
+.font-pixel { font-family: var(--font-pixel), monospace; }
+.font-retro { font-family: var(--font-body), sans-serif; }
+/* small pixel-font label accent (retro flavor) */
+.pixel-label {
+  font-family: var(--font-pixel), monospace;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+
+/* ---- light neo-retro utilities ---- */
+.grad-text {
+  background-image: linear-gradient(115deg, #22d3ee, #4f8cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.neo-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(140, 190, 220, 0.16);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.neo-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(34, 211, 238, 0.4);
+  box-shadow: 0 16px 40px -20px rgba(34, 211, 238, 0.22);
+}
+.neo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border-radius: 0.7rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.neo-btn-primary {
+  background-image: linear-gradient(115deg, #22d3ee, #4f8cff);
+  color: #06121f;
+  box-shadow: 0 6px 18px -10px rgba(34, 211, 238, 0.3);
+}
+.neo-btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 10px 24px -12px rgba(79, 140, 255, 0.35);
+}
+.neo-btn-ghost {
+  border: 1px solid rgba(34, 211, 238, 0.55);
+  color: #22d3ee;
+  background: rgba(11, 17, 28, 0.55);
+}
+.neo-btn-ghost:hover {
+  border-color: #22d3ee;
+  color: #67e8f9;
+  background: rgba(34, 211, 238, 0.14);
+}
+.neo-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.10);
+  border-radius: 999px;
+}
+.text-glow { text-shadow: 0 0 14px rgba(34, 211, 238, 0.20); }
+
+/* subtle neon grid for the hero */
+.retro-grid {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.07) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent);
+}
+
+/* dark arcade screen styling kept for the GAMES themselves */
+.pixel-box {
+  background: var(--retro-panel);
+  border: 2px solid rgba(255, 255, 255, 0.10);
+  border-radius: 0.6rem;
+  box-shadow: 0 12px 34px -14px rgba(0, 0, 0, 0.75);
+}
+.pixel-btn {
+  font-family: var(--font-pixel), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.7);
+  transition: transform 0.12s ease, filter 0.15s ease;
+}
+.pixel-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.pixel-btn:active { transform: translateY(0); }
+
+@keyframes retro-blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.retro-blink { animation: retro-blink 1.1s steps(1) infinite; }
+
+@keyframes float-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 
 /* Modern Animations */
 @keyframes fade-in-up {

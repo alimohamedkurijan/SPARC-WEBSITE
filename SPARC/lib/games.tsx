@@ -2,6 +2,8 @@ import type { ComponentType } from "react";
 import AIvsReal from "@/components/games/AIvsReal";
 import RobotPath from "@/components/games/RobotPath";
 import CircuitConnect from "@/components/games/CircuitConnect";
+import Tetris from "@/components/games/Tetris";
+import PixelPong from "@/components/games/PixelPong";
 
 // Games registry
 // -----------------------------------------------------------------------------
@@ -50,5 +52,21 @@ export const games: Game[] = [
       "Rotate the wires to route power from the battery to the goal. 5 levels, easy to hard.",
     emoji: "⚡",
     component: CircuitConnect,
+  },
+  {
+    slug: "tetris",
+    title: "Tetris",
+    description:
+      "Classic falling-blocks Tetris. Clear lines, level up, chase the high score.",
+    emoji: "🧱",
+    component: Tetris,
+  },
+  {
+    slug: "pixel-pong",
+    title: "Pixel Pong",
+    description:
+      "Atari-style Pong vs the CPU. First to 7 wins — a fair, winnable match.",
+    emoji: "🏓",
+    component: PixelPong,
   },
 ];

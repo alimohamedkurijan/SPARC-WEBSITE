@@ -116,7 +116,7 @@ export default function AIvsReal() {
         </h3>
         <p className="text-foreground/60 max-w-sm mx-auto">
           Add video clips in{" "}
-          <code className="px-1 py-0.5 rounded bg-[#C02026]/10 text-[#C02026]">
+          <code className="px-1 py-0.5 rounded bg-[#4f8cff]/10 text-[#4f8cff]">
             components/games/AIvsReal.tsx
           </code>{" "}
           to start playing.
@@ -136,7 +136,7 @@ export default function AIvsReal() {
         </h3>
         <p className="text-lg text-foreground/70 mb-1">
           You scored{" "}
-          <span className="font-bold text-[#C02026]">
+          <span className="font-bold text-[#4f8cff]">
             {score} / {total}
           </span>
         </p>
@@ -150,7 +150,7 @@ export default function AIvsReal() {
           onClick={handleRestart}
           className={cn(
             "px-8 py-3 text-base font-semibold rounded-lg text-white",
-            "bg-[#CF8420] hover:bg-[#CF8420]/90 hover:scale-105 active:scale-95",
+            "bg-[#22d3ee] hover:bg-[#22d3ee]/90 hover:scale-105 active:scale-95",
             "transition-all"
           )}
         >
@@ -167,13 +167,13 @@ export default function AIvsReal() {
         <span className="font-semibold text-foreground">
           Round {current + 1} of {total}
         </span>
-        <span className="font-semibold text-[#C02026]">
+        <span className="font-semibold text-[#4f8cff]">
           Score: {score} · Need {needed} to win
         </span>
       </div>
       <div className="h-2 w-full rounded-full bg-[#D9D9D9] overflow-hidden">
         <div
-          className="h-full bg-[#CF8420] transition-all duration-300"
+          className="h-full bg-[#22d3ee] transition-all duration-300"
           style={{ width: `${((current + (answered !== null ? 1 : 0)) / total) * 100}%` }}
         />
       </div>
@@ -195,8 +195,8 @@ export default function AIvsReal() {
 
       {/* Prompt */}
       <p className="text-center text-lg font-semibold text-foreground">
-        Is this video <span className="text-[#CF8420]">AI-generated</span> or{" "}
-        <span className="text-[#C02026]">real</span>?
+        Is this video <span className="text-[#22d3ee]">AI-generated</span> or{" "}
+        <span className="text-[#4f8cff]">real</span>?
       </p>
 
       {/* Answer buttons */}
@@ -208,7 +208,7 @@ export default function AIvsReal() {
           className={cn(
             "py-4 rounded-xl text-lg font-bold border-2 transition-all",
             answered === null
-              ? "border-[#C02026] text-[#C02026] hover:bg-[#C02026] hover:text-white"
+              ? "border-[#4f8cff] text-[#4f8cff] hover:bg-[#4f8cff] hover:text-white"
               : round.isAI === false
                 ? "border-green-600 bg-green-600 text-white"
                 : answered === false
@@ -226,7 +226,7 @@ export default function AIvsReal() {
           className={cn(
             "py-4 rounded-xl text-lg font-bold border-2 transition-all",
             answered === null
-              ? "border-[#CF8420] text-[#CF8420] hover:bg-[#CF8420] hover:text-white"
+              ? "border-[#22d3ee] text-[#22d3ee] hover:bg-[#22d3ee] hover:text-[#06121f]"
               : round.isAI === true
                 ? "border-green-600 bg-green-600 text-white"
                 : answered === true
@@ -258,7 +258,7 @@ export default function AIvsReal() {
             onClick={handleNext}
             className={cn(
               "px-8 py-3 text-base font-semibold rounded-lg text-white",
-              "bg-[#C02026] hover:bg-[#C02026]/90 hover:scale-105 active:scale-95",
+              "bg-[#4f8cff] hover:bg-[#4f8cff]/90 hover:scale-105 active:scale-95",
               "transition-all"
             )}
           >

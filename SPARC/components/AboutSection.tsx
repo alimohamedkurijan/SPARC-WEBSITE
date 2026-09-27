@@ -66,17 +66,17 @@ export default function AboutSection() {
   const displayFeatures = features.length > 0 ? features : defaultFeatures;
 
   return (
-    <section id="about" className="py-20 lg:py-32 bg-white">
+    <section id="about" className="py-20 lg:py-32">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#C02026] mb-4">
-            About{" "}
-            <span className="text-[#CF8420]">SPARC</span>
-          </h2>
-          <p className="text-xl text-foreground/70">
+        <div className="text-center mb-16 space-y-5">
+          <span className="neo-chip px-3 py-1 text-xs font-semibold uppercase tracking-wider">
             Student Programming and Robotics Club
-          </p>
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            About{" "}
+            <span className="text-[#22d3ee]">SPARC</span>
+          </h2>
         </div>
 
         <div className="max-w-6xl mx-auto space-y-24">
@@ -93,22 +93,22 @@ export default function AboutSection() {
                 "space-y-6",
                 index % 2 === 1 && "md:order-2"
               )}>
-                <div className="text-[#CF8420] font-semibold text-sm uppercase tracking-wide">
+                <span className="neo-chip px-3 py-1 text-xs font-semibold uppercase tracking-wider">
                   {feature.subtitle}
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-[#C02026]">
+                </span>
+                <h3 className="text-3xl md:text-4xl font-bold grad-text">
                   {feature.title}
                 </h3>
-                <p className="text-lg text-foreground/70 leading-relaxed">
+                <p className="text-lg text-[#ffffff]/75 leading-relaxed">
                   {feature.description}
                 </p>
                 <ul className="space-y-3 pt-4">
                   {feature.points?.map((point, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <svg className="w-6 h-6 text-[#CF8420] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <svg className="w-6 h-6 text-[#22d3ee] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-lg text-foreground/80">
+                      <span className="text-lg text-[#ffffff]/75">
                         {point}
                       </span>
                     </li>
@@ -118,10 +118,10 @@ export default function AboutSection() {
 
               {/* Image */}
               <div className={cn(
-                "relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C02026]/20",
+                "neo-card overflow-hidden rounded-2xl",
                 index % 2 === 1 && "md:order-1"
               )}>
-                <div className="aspect-square relative bg-gray-200">
+                <div className="aspect-square relative bg-[#141019]">
                   {feature.image ? (
                     <Image
                       src={feature.image}
@@ -134,7 +134,7 @@ export default function AboutSection() {
                       }}
                     />
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#C02026] to-[#CF8420]" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#4f8cff] to-[#22d3ee]" />
                   )}
                 </div>
               </div>

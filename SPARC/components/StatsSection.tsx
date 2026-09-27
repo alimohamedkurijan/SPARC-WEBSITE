@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 import { supabase } from "@/lib/supabase";
 
 interface Stat {
@@ -40,34 +39,30 @@ export default function StatsSection() {
     fetchStats();
   }, []);
 
-  // Use database stats or fall back to defaults
   const displayStats = stats.length > 0 ? stats : defaultStats;
 
   return (
-    <section className="py-20 lg:py-32 bg-[#D9D9D9]">
+    <section className="py-20 lg:py-28">
       <div className="container mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Our Numbers
+        <div className="text-center mb-14 space-y-3">
+          <span className="neo-chip px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em]">
+            By the numbers
+          </span>
+          <h2 className="font-display font-bold text-4xl md:text-5xl tracking-tight">
+            Our <span className="grad-text">High Scores</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
           {displayStats.map((stat, index) => (
-            <div
-              key={index}
-              className={cn(
-                "text-center p-8 rounded-xl",
-                "bg-white hover:shadow-lg hover:border-2 hover:border-[#CF8420] transition-all duration-300"
-              )}
-            >
-              <div className="text-5xl md:text-6xl font-black text-[#C02026] mb-2">
+            <div key={index} className="neo-card p-8 text-center">
+              <div className="font-display font-extrabold text-4xl md:text-5xl grad-text text-glow mb-3">
                 {stat.number}
               </div>
-              <div className="text-2xl font-bold text-foreground mb-1">
+              <div className="font-semibold text-[#ffffff] mb-1">
                 {stat.label}
               </div>
-              <div className="text-lg text-foreground/60">
+              <div className="text-sm text-[#ffffff]/50">
                 {stat.description}
               </div>
             </div>

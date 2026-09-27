@@ -1,72 +1,80 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+  const pathname = usePathname();
+  const onHome = pathname === "/";
   const currentYear = new Date().getFullYear();
 
+  const handleSectionClick =
+    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (onHome) {
+        const element = document.getElementById(id);
+        if (element) {
+          e.preventDefault();
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
+
+  const linkClass =
+    "text-sm text-[#06121f]/60 hover:text-[#22d3ee] transition-colors";
+
   return (
-    <footer className="bg-white border-t border-club-main/10">
-      <div className="container mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+    <footer className="border-t border-white/10 bg-[#0b111c]/60">
+      <div className="container mx-auto px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
           {/* Logo and Description */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-club-main flex items-center justify-center">
-                <span className="text-white font-bold text-lg">S</span>
-              </div>
+              <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-[#4f8cff] to-[#22d3ee] text-[#06121f] font-display font-extrabold text-lg">
+                S
+              </span>
               <div>
-                <h3 className="text-xl font-bold text-foreground">SPARC</h3>
-                <p className="text-xs text-club-orange uppercase tracking-wider font-semibold">Student Club</p>
+                <h3 className="font-display font-bold text-lg text-[#ffffff]">SPARC</h3>
+                <p className="text-[10px] text-[#22d3ee] uppercase tracking-[0.2em] mt-1">
+                  Student Club
+                </p>
               </div>
             </div>
-            <p className="text-foreground/60 max-w-md leading-relaxed">
-              A dynamic student club dedicated to fostering innovation, collaboration, and excellence.
+            <p className="text-[#ffffff]/60 max-w-md leading-relaxed">
+              A student club dedicated to robotics, programming, innovation — and
+              a little friendly arcade competition.
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="font-display font-semibold text-sm text-[#22d3ee] uppercase tracking-wider">
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
               <li>
-                <button
-                  onClick={() => scrollToSection("hero")}
-                  className="text-sm text-foreground/70 hover:text-[#CF8420] font-medium transition-colors"
-                >
+                <Link href="/#hero" onClick={handleSectionClick("hero")} className={linkClass}>
                   Home
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("about")}
-                  className="text-sm text-foreground/70 hover:text-[#CF8420] font-medium transition-colors"
-                >
+                <Link href="/#about" onClick={handleSectionClick("about")} className={linkClass}>
                   About
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  onClick={() => scrollToSection("team")}
-                  className="text-sm text-foreground/70 hover:text-[#CF8420] font-medium transition-colors"
-                >
-                  Team
-                </button>
+                <Link href="/games" className={linkClass}>
+                  Arcade
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Contact */}
           <div className="space-y-4">
-            <h4 className="font-semibold text-foreground">Contact</h4>
-            <ul className="space-y-2 text-sm text-foreground/60">
+            <h4 className="font-display font-semibold text-sm text-[#22d3ee] uppercase tracking-wider">
+              Contact
+            </h4>
+            <ul className="space-y-3 text-sm text-[#ffffff]/60">
               <li>contact@sparc.club</li>
               <li>University Campus</li>
             </ul>
@@ -74,9 +82,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-club-main/20 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-foreground/60">
-            © {currentYear} SPARC Student Club. All rights reserved.
+        <div className="pt-6 border-t border-white/10 text-center">
+          <p className="text-xs text-[#ffffff]/50">
+            © {currentYear} SPARC Student Club · Built with code &amp; caffeine.
           </p>
         </div>
       </div>

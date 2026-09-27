@@ -233,8 +233,8 @@ export default function RobotPath() {
             className={cn(
               "px-3 py-1.5 text-xs font-semibold rounded-full border-2 transition-all",
               i === levelIndex
-                ? "border-[#C02026] bg-[#C02026] text-white"
-                : "border-[#C02026]/20 text-foreground/70 hover:border-[#CF8420]"
+                ? "border-[#4f8cff] bg-[#4f8cff] text-white"
+                : "border-[#4f8cff]/20 text-foreground/70 hover:border-[#22d3ee]"
             )}
           >
             {solved.has(i) ? "✓ " : ""}
@@ -262,7 +262,7 @@ export default function RobotPath() {
       {/* Grid */}
       <div className="mx-auto w-full max-w-md">
         <div
-          className="grid gap-px bg-[#C02026]/10 p-px rounded-lg overflow-hidden"
+          className="grid gap-px bg-[#4f8cff]/10 p-px rounded-lg overflow-hidden"
           style={{ gridTemplateColumns: `repeat(${GRID}, minmax(0, 1fr))` }}
         >
           {Array.from({ length: GRID * GRID }).map((_, idx) => {
@@ -279,7 +279,7 @@ export default function RobotPath() {
                 className={cn(
                   "aspect-square flex items-center justify-center text-[10px] sm:text-xs leading-none select-none",
                   isWall ? "bg-[#3a3a3a]" : "bg-white",
-                  isGoal && !isRobot && "bg-[#CF8420]/25",
+                  isGoal && !isRobot && "bg-[#22d3ee]/25",
                   isStart && !isRobot && "bg-green-100"
                 )}
               >
@@ -323,12 +323,12 @@ export default function RobotPath() {
             <button
               type="button"
               onClick={() => goToLevel(levelIndex + 1)}
-              className="px-6 py-2.5 text-sm font-semibold rounded-lg bg-[#CF8420] hover:bg-[#CF8420]/90 text-white hover:scale-105 active:scale-95 transition-all"
+              className="px-6 py-2.5 text-sm font-semibold rounded-lg bg-[#22d3ee] hover:bg-[#22d3ee]/90 text-[#06121f] hover:scale-105 active:scale-95 transition-all"
             >
               Next Level →
             </button>
           ) : (
-            <p className="text-base font-bold text-[#C02026]">
+            <p className="text-base font-bold text-[#4f8cff]">
               {allSolved ? "🏆 All levels complete — you're a master navigator!" : "Final level cleared! 🎉"}
             </p>
           )}
@@ -336,7 +336,7 @@ export default function RobotPath() {
       )}
 
       {/* Controls */}
-      <div className="rounded-xl border-2 border-[#C02026]/10 p-4 space-y-4">
+      <div className="rounded-xl border-2 border-[#4f8cff]/10 p-4 space-y-4">
         {/* Direction + steps builder */}
         <div className="flex flex-wrap items-center justify-center gap-2">
           <div className="grid grid-cols-4 gap-1">
@@ -350,8 +350,8 @@ export default function RobotPath() {
                 className={cn(
                   "w-10 h-10 rounded-lg text-lg font-bold border-2 transition-all disabled:opacity-40",
                   dir === d
-                    ? "border-[#C02026] bg-[#C02026] text-white"
-                    : "border-[#C02026]/20 text-foreground hover:border-[#CF8420]"
+                    ? "border-[#4f8cff] bg-[#4f8cff] text-white"
+                    : "border-[#4f8cff]/20 text-foreground hover:border-[#22d3ee]"
                 )}
               >
                 {DIRS[d].arrow}
@@ -364,7 +364,7 @@ export default function RobotPath() {
               type="button"
               disabled={running || steps <= 1}
               onClick={() => setSteps((s) => Math.max(1, s - 1))}
-              className="w-8 h-8 rounded-lg border-2 border-[#C02026]/20 font-bold disabled:opacity-40 hover:border-[#CF8420]"
+              className="w-8 h-8 rounded-lg border-2 border-[#4f8cff]/20 font-bold disabled:opacity-40 hover:border-[#22d3ee]"
             >
               −
             </button>
@@ -373,7 +373,7 @@ export default function RobotPath() {
               type="button"
               disabled={running || steps >= GRID - 1}
               onClick={() => setSteps((s) => Math.min(GRID - 1, s + 1))}
-              className="w-8 h-8 rounded-lg border-2 border-[#C02026]/20 font-bold disabled:opacity-40 hover:border-[#CF8420]"
+              className="w-8 h-8 rounded-lg border-2 border-[#4f8cff]/20 font-bold disabled:opacity-40 hover:border-[#22d3ee]"
             >
               +
             </button>
@@ -383,7 +383,7 @@ export default function RobotPath() {
             type="button"
             disabled={running}
             onClick={addCommand}
-            className="px-4 h-10 rounded-lg text-sm font-semibold bg-[#CF8420] hover:bg-[#CF8420]/90 text-white disabled:opacity-40 transition-colors"
+            className="px-4 h-10 rounded-lg text-sm font-semibold bg-[#22d3ee] hover:bg-[#22d3ee]/90 text-[#06121f] disabled:opacity-40 transition-colors"
           >
             + Add {DIRS[dir].label} {steps}
           </button>
@@ -403,7 +403,7 @@ export default function RobotPath() {
                 disabled={running}
                 onClick={() => removeCommand(i)}
                 title="Remove"
-                className="group inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-sm font-semibold bg-[#C02026]/10 text-[#C02026] hover:bg-red-500 hover:text-white transition-colors disabled:opacity-60"
+                className="group inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-sm font-semibold bg-[#4f8cff]/10 text-[#4f8cff] hover:bg-red-500 hover:text-white transition-colors disabled:opacity-60"
               >
                 {DIRS[cmd.dir].arrow} {cmd.steps}
                 <span className="opacity-50 group-hover:opacity-100">×</span>
@@ -418,7 +418,7 @@ export default function RobotPath() {
             type="button"
             disabled={running || program.length === 0}
             onClick={run}
-            className="px-6 py-2.5 text-sm font-bold rounded-lg bg-[#C02026] hover:bg-[#C02026]/90 text-white disabled:opacity-40 hover:scale-105 active:scale-95 transition-all"
+            className="px-6 py-2.5 text-sm font-bold rounded-lg bg-[#4f8cff] hover:bg-[#4f8cff]/90 text-white disabled:opacity-40 hover:scale-105 active:scale-95 transition-all"
           >
             {running ? "Running…" : "▶ Run"}
           </button>
@@ -426,7 +426,7 @@ export default function RobotPath() {
             type="button"
             disabled={running}
             onClick={resetBoard}
-            className="px-6 py-2.5 text-sm font-semibold rounded-lg border-2 border-[#C02026]/30 text-[#C02026] hover:bg-[#C02026]/5 disabled:opacity-40 transition-colors"
+            className="px-6 py-2.5 text-sm font-semibold rounded-lg border-2 border-[#4f8cff]/30 text-[#4f8cff] hover:bg-[#4f8cff]/5 disabled:opacity-40 transition-colors"
           >
             Reset
           </button>

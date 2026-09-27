@@ -221,7 +221,7 @@ export default function AdminSettings() {
             <Button
               onClick={handleSaveStats}
               disabled={savingStats}
-              className="bg-[#CF8420] hover:bg-[#CF8420]/90"
+              className="bg-[#22d3ee] hover:bg-[#22d3ee]/90"
             >
               {savingStats ? "Saving..." : "Save Statistics"}
             </Button>
@@ -231,7 +231,7 @@ export default function AdminSettings() {
             {stats.map((stat) => (
               <div key={stat.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 bg-[#C02026] rounded-lg flex items-center justify-center text-white font-bold">
+                  <div className="w-10 h-10 bg-[#4f8cff] rounded-lg flex items-center justify-center text-white font-bold">
                     {stat.display_order}
                   </div>
                   <span className="text-sm font-medium text-gray-500 uppercase">
@@ -246,7 +246,7 @@ export default function AdminSettings() {
                       type="text"
                       value={stat.number}
                       onChange={(e) => handleStatChange(stat.id, 'number', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     />
                   </div>
                   <div>
@@ -255,7 +255,7 @@ export default function AdminSettings() {
                       type="text"
                       value={stat.label}
                       onChange={(e) => handleStatChange(stat.id, 'label', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     />
                   </div>
                   <div>
@@ -264,7 +264,7 @@ export default function AdminSettings() {
                       type="text"
                       value={stat.description}
                       onChange={(e) => handleStatChange(stat.id, 'description', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     />
                   </div>
                 </div>
@@ -272,7 +272,7 @@ export default function AdminSettings() {
                 <div className="mt-4 pt-4 border-t border-gray-200">
                   <p className="text-xs text-gray-500 mb-2">Preview:</p>
                   <div className="text-center p-3 bg-white rounded-lg">
-                    <div className="text-2xl font-black text-[#C02026]">{stat.number}</div>
+                    <div className="text-2xl font-black text-[#4f8cff]">{stat.number}</div>
                     <div className="text-sm font-bold text-gray-900">{stat.label}</div>
                     <div className="text-xs text-gray-500">{stat.description}</div>
                   </div>
@@ -298,7 +298,7 @@ export default function AdminSettings() {
             <Button
               onClick={handleSaveAbout}
               disabled={savingAbout}
-              className="bg-[#CF8420] hover:bg-[#CF8420]/90"
+              className="bg-[#22d3ee] hover:bg-[#22d3ee]/90"
             >
               {savingAbout ? "Saving..." : "Save About Sections"}
             </Button>
@@ -308,7 +308,7 @@ export default function AdminSettings() {
             {aboutSections.map((section) => (
               <div key={section.id} className="bg-gray-50 rounded-lg p-6 border border-gray-200">
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 bg-[#CF8420] rounded-lg flex items-center justify-center text-white font-bold">
+                  <div className="w-10 h-10 bg-[#22d3ee] rounded-lg flex items-center justify-center text-[#06121f] font-bold">
                     {section.display_order}
                   </div>
                   <span className="text-sm font-medium text-gray-500 uppercase">
@@ -325,7 +325,7 @@ export default function AdminSettings() {
                         type="text"
                         value={section.title}
                         onChange={(e) => handleAboutChange(section.id, 'title', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                       />
                     </div>
 
@@ -335,7 +335,7 @@ export default function AdminSettings() {
                         type="text"
                         value={section.subtitle || ''}
                         onChange={(e) => handleAboutChange(section.id, 'subtitle', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                       />
                     </div>
 
@@ -345,7 +345,7 @@ export default function AdminSettings() {
                         value={section.description || ''}
                         onChange={(e) => handleAboutChange(section.id, 'description', e.target.value)}
                         rows={3}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                       />
                     </div>
 
@@ -359,7 +359,7 @@ export default function AdminSettings() {
                               type="text"
                               value={point}
                               onChange={(e) => handlePointChange(section.id, index, e.target.value)}
-                              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                               placeholder={`Point ${index + 1}`}
                             />
                             <button
@@ -374,7 +374,7 @@ export default function AdminSettings() {
                         <button
                           type="button"
                           onClick={() => handleAddPoint(section.id)}
-                          className="text-sm text-[#CF8420] hover:underline"
+                          className="text-sm text-[#22d3ee] hover:underline"
                         >
                           + Add another point
                         </button>
@@ -411,11 +411,11 @@ export default function AdminSettings() {
                             const file = e.target.files?.[0];
                             if (file) handleImageUpload(section.id, file);
                           }}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:bg-[#CF8420] file:text-white file:text-sm"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:bg-[#22d3ee] file:text-[#06121f] file:text-sm"
                           disabled={uploadingImage === section.id}
                         />
                         {uploadingImage === section.id && (
-                          <p className="text-sm text-[#CF8420] mt-1">Uploading...</p>
+                          <p className="text-sm text-[#22d3ee] mt-1">Uploading...</p>
                         )}
                       </div>
 
@@ -425,7 +425,7 @@ export default function AdminSettings() {
                         type="url"
                         value={section.image || ''}
                         onChange={(e) => handleAboutChange(section.id, 'image', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                         placeholder="Paste image URL"
                       />
                     </div>

@@ -207,7 +207,7 @@ export default function AdminTeam() {
           </div>
           <Button
             onClick={() => setIsFormOpen(true)}
-            className="bg-[#CF8420] hover:bg-[#CF8420]/90"
+            className="bg-[#22d3ee] hover:bg-[#22d3ee]/90"
           >
             + Add Team Member
           </Button>
@@ -227,7 +227,7 @@ export default function AdminTeam() {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     required
                   />
                 </div>
@@ -237,7 +237,7 @@ export default function AdminTeam() {
                     type="text"
                     value={formData.role}
                     onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     placeholder="e.g., President, Technical Lead"
                     required
                   />
@@ -248,7 +248,7 @@ export default function AdminTeam() {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                   />
                 </div>
                 <div>
@@ -257,7 +257,7 @@ export default function AdminTeam() {
                     type="url"
                     value={formData.linkedin}
                     onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     placeholder="https://linkedin.com/in/..."
                   />
                 </div>
@@ -269,7 +269,7 @@ export default function AdminTeam() {
                   value={formData.bio}
                   onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
                   rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                   placeholder="Short description about this team member..."
                 />
               </div>
@@ -294,10 +294,10 @@ export default function AdminTeam() {
                       type="file"
                       accept="image/*"
                       onChange={handleFileSelect}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:bg-[#CF8420] file:text-white file:text-sm"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:bg-[#22d3ee] file:text-[#06121f] file:text-sm"
                       disabled={uploadingImage}
                     />
-                    {uploadingImage && <p className="text-sm text-[#CF8420]">Uploading...</p>}
+                    {uploadingImage && <p className="text-sm text-[#22d3ee]">Uploading...</p>}
 
                     <div className="text-center text-gray-400 text-sm">— OR —</div>
 
@@ -308,7 +308,7 @@ export default function AdminTeam() {
                         setFormData({ ...formData, image: e.target.value });
                         setImagePreview(e.target.value);
                       }}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                       placeholder="Paste image URL"
                     />
 
@@ -342,7 +342,7 @@ export default function AdminTeam() {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <Button type="submit" className="bg-[#CF8420] hover:bg-[#CF8420]/90">
+                <Button type="submit" className="bg-[#22d3ee] hover:bg-[#22d3ee]/90">
                   {editingMember ? "Update Member" : "Add Member"}
                 </Button>
                 <Button type="button" onClick={resetForm} className="bg-gray-500 hover:bg-gray-600">
@@ -381,7 +381,7 @@ export default function AdminTeam() {
                       Hidden
                     </div>
                   )}
-                  <div className="absolute top-2 left-2 bg-[#C02026] text-white px-2 py-1 rounded text-xs">
+                  <div className="absolute top-2 left-2 bg-[#4f8cff] text-white px-2 py-1 rounded text-xs">
                     #{member.display_order}
                   </div>
                 </div>
@@ -389,7 +389,7 @@ export default function AdminTeam() {
                 {/* Info */}
                 <div className="p-4">
                   <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-[#CF8420] font-semibold">{member.role}</p>
+                  <p className="text-[#22d3ee] font-semibold">{member.role}</p>
                   {member.bio && (
                     <p className="text-sm text-gray-600 mt-2 line-clamp-2">{member.bio}</p>
                   )}

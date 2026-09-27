@@ -239,7 +239,7 @@ export default function AdminEvents() {
           </div>
           <Button
             onClick={() => setIsFormOpen(true)}
-            className="bg-[#CF8420] hover:bg-[#CF8420]/90"
+            className="bg-[#22d3ee] hover:bg-[#22d3ee]/90"
           >
             + Add New Event
           </Button>
@@ -261,7 +261,7 @@ export default function AdminEvents() {
                     type="text"
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     required
                   />
                 </div>
@@ -274,7 +274,7 @@ export default function AdminEvents() {
                     type="date"
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     required
                   />
                 </div>
@@ -287,7 +287,7 @@ export default function AdminEvents() {
                     type="time"
                     value={formData.time}
                     onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     required
                   />
                 </div>
@@ -300,7 +300,7 @@ export default function AdminEvents() {
                     type="text"
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     required
                   />
                 </div>
@@ -313,7 +313,7 @@ export default function AdminEvents() {
                     type="number"
                     value={formData.spots}
                     onChange={(e) => setFormData({ ...formData, spots: parseInt(e.target.value) })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     required
                     min="1"
                   />
@@ -327,7 +327,7 @@ export default function AdminEvents() {
                     type="date"
                     value={formData.deadline}
                     onChange={(e) => setFormData({ ...formData, deadline: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                     required
                   />
                 </div>
@@ -340,7 +340,7 @@ export default function AdminEvents() {
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                   rows={4}
                   required
                 />
@@ -357,7 +357,7 @@ export default function AdminEvents() {
                       type="file"
                       accept="image/*"
                       onChange={handleFileSelect}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#CF8420] file:text-white hover:file:bg-[#CF8420]/90"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-[#22d3ee] file:text-[#06121f] hover:file:bg-[#22d3ee]/90"
                     />
                     <p className="text-xs text-gray-500 mt-1">
                       Upload an image file (JPG, PNG, etc.) - Best for featured events
@@ -401,7 +401,7 @@ export default function AdminEvents() {
                         type="url"
                         value={formData.image}
                         onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                         placeholder="Or paste image URL (https://example.com/image.jpg)"
                       />
                       <p className="text-xs text-gray-500 mt-1">
@@ -411,7 +411,7 @@ export default function AdminEvents() {
                   )}
 
                   {uploadingImage && (
-                    <p className="text-sm text-[#CF8420] font-semibold">Uploading image...</p>
+                    <p className="text-sm text-[#22d3ee] font-semibold">Uploading image...</p>
                   )}
                 </div>
               </div>
@@ -422,7 +422,7 @@ export default function AdminEvents() {
                   id="featured"
                   checked={formData.is_featured}
                   onChange={(e) => setFormData({ ...formData, is_featured: e.target.checked })}
-                  className="w-4 h-4 text-[#CF8420] focus:ring-[#CF8420] border-gray-300 rounded"
+                  className="w-4 h-4 text-[#22d3ee] focus:ring-[#22d3ee] border-gray-300 rounded"
                 />
                 <label htmlFor="featured" className="text-sm font-semibold text-gray-700">
                   Featured Event (displays as large card on homepage)
@@ -432,7 +432,7 @@ export default function AdminEvents() {
               <div className="flex gap-3 pt-4">
                 <Button
                   type="submit"
-                  className="bg-[#CF8420] hover:bg-[#CF8420]/90"
+                  className="bg-[#22d3ee] hover:bg-[#22d3ee]/90"
                 >
                   {editingEvent ? "Update Event" : "Create Event"}
                 </Button>
@@ -467,7 +467,7 @@ export default function AdminEvents() {
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-lg font-bold text-gray-900">{event.title}</h3>
                         {event.is_featured && (
-                          <span className="px-3 py-1 bg-[#CF8420] text-white text-xs font-semibold rounded-full">
+                          <span className="px-3 py-1 bg-[#22d3ee] text-[#06121f] text-xs font-semibold rounded-full">
                             Featured
                           </span>
                         )}

@@ -123,7 +123,7 @@ export default function AdminUsers() {
                 <p className="text-sm font-medium text-gray-600">Admins</p>
                 <p className="text-3xl font-bold text-gray-900 mt-2">{adminCount}</p>
               </div>
-              <div className="w-12 h-12 bg-[#C02026]/10 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#4f8cff]/10 rounded-lg flex items-center justify-center">
                 <span className="text-2xl">👑</span>
               </div>
             </div>
@@ -154,7 +154,7 @@ export default function AdminUsers() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by name or email..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
               />
             </div>
 
@@ -165,7 +165,7 @@ export default function AdminUsers() {
               <select
                 value={filterRole}
                 onChange={(e) => setFilterRole(e.target.value as "all" | "admin" | "user")}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
               >
                 <option value="all">All Roles</option>
                 <option value="admin">Admins Only</option>
@@ -200,7 +200,7 @@ export default function AdminUsers() {
                     <tr key={user.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 bg-[#CF8420] rounded-full flex items-center justify-center text-white font-bold">
+                          <div className="w-10 h-10 bg-[#22d3ee] rounded-full flex items-center justify-center text-[#06121f] font-bold">
                             {user.name.charAt(0).toUpperCase()}
                           </div>
                           <span className="font-medium text-gray-900">{user.name}</span>
@@ -213,7 +213,7 @@ export default function AdminUsers() {
                           onChange={(e) => handleRoleChange(user.id, e.target.value as "admin" | "user")}
                           className={`px-3 py-1 rounded-full text-sm font-semibold ${
                             user.role === "admin"
-                              ? "bg-[#C02026] text-white"
+                              ? "bg-[#4f8cff] text-white"
                               : "bg-gray-200 text-gray-700"
                           }`}
                         >

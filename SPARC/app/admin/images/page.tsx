@@ -172,7 +172,7 @@ export default function AdminImages() {
               disabled={isUploading}
             />
             <label htmlFor="file-upload">
-              <span className="inline-flex items-center justify-center px-4 py-2 bg-[#CF8420] hover:bg-[#CF8420]/90 text-white font-semibold rounded-lg cursor-pointer transition-colors disabled:opacity-50">
+              <span className="inline-flex items-center justify-center px-4 py-2 bg-[#22d3ee] hover:bg-[#22d3ee]/90 text-[#06121f] font-semibold rounded-lg cursor-pointer transition-colors disabled:opacity-50">
                 {isUploading ? "Uploading..." : "+ Upload Images"}
               </span>
             </label>
@@ -194,7 +194,7 @@ export default function AdminImages() {
                 <p className="text-sm font-medium text-gray-600">Total Images</p>
                 <p className="text-3xl font-bold text-gray-900 mt-2">{images.length}</p>
               </div>
-              <div className="w-12 h-12 bg-[#CF8420]/10 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-[#22d3ee]/10 rounded-lg flex items-center justify-center">
                 <span className="text-2xl">🖼️</span>
               </div>
             </div>
@@ -255,7 +255,7 @@ export default function AdminImages() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-lg font-medium text-sm transition-colors ${
                   selectedCategory === cat
-                    ? "bg-[#CF8420] text-white"
+                    ? "bg-[#22d3ee] text-[#06121f]"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -299,7 +299,7 @@ export default function AdminImages() {
                   <select
                     value={image.category}
                     onChange={(e) => handleCategoryChange(image.id, e.target.value as ImageFile["category"])}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none"
                   >
                     <option value="hero">Hero</option>
                     <option value="events">Events</option>

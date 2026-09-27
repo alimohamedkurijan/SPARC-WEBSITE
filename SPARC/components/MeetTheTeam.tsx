@@ -157,7 +157,7 @@ export default function MeetTheTeam({ onJoinUsClick }: MeetTheTeamProps) {
                 key={member.id || index}
                 className={cn(
                   "group relative bg-white rounded-xl overflow-hidden flex-shrink-0",
-                  "border-2 border-[#C02026]/20 hover:border-[#CF8420] transition-all",
+                  "border-2 border-[#4f8cff]/20 hover:border-[#22d3ee] transition-all",
                   "shadow-md hover:shadow-xl transition-all duration-300",
                   "w-64"
                 )}
@@ -177,7 +177,7 @@ export default function MeetTheTeam({ onJoinUsClick }: MeetTheTeamProps) {
                       }}
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#C02026] to-[#CF8420]">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#4f8cff] to-[#22d3ee]">
                       <span className="text-white text-6xl font-bold">
                         {member.name.charAt(0)}
                       </span>
@@ -186,10 +186,10 @@ export default function MeetTheTeam({ onJoinUsClick }: MeetTheTeamProps) {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="p-4 space-y-1">
-                  <h3 className="text-lg font-bold text-foreground group-hover:text-[#CF8420] transition-colors">
+                  <h3 className="text-lg font-bold text-foreground group-hover:text-[#22d3ee] transition-colors">
                     {member.name}
                   </h3>
-                  <p className="text-xs font-medium text-[#CF8420] uppercase tracking-wide">
+                  <p className="text-xs font-medium text-[#22d3ee] uppercase tracking-wide">
                     {member.role}
                   </p>
                   {member.bio && (
@@ -208,7 +208,7 @@ export default function MeetTheTeam({ onJoinUsClick }: MeetTheTeamProps) {
             size="lg"
             className={cn(
               "px-8 py-6 text-base font-semibold rounded-xl",
-              "bg-[#CF8420] hover:bg-[#CF8420]/90 text-white",
+              "bg-[#22d3ee] hover:bg-[#22d3ee]/90 text-[#06121f]",
               "shadow-lg hover:shadow-xl transition-all duration-300",
               "hover:scale-105 active:scale-95"
             )}

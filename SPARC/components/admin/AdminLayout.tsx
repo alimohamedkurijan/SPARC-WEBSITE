@@ -43,7 +43,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               />
             </div>
             <div>
-              <h1 className="font-bold text-lg text-[#C02026]">SPARC</h1>
+              <h1 className="font-bold text-lg text-[#4f8cff]">SPARC</h1>
               <p className="text-xs text-gray-600">Admin Panel</p>
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               onClick={() => router.push(item.path)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                 pathname === item.path
-                  ? "bg-[#CF8420] text-white"
+                  ? "bg-[#22d3ee] text-[#06121f]"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >

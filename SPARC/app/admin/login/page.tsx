@@ -60,7 +60,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#C02026] to-[#CF8420] flex items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#4f8cff] to-[#22d3ee] flex items-center justify-center p-6">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
@@ -72,7 +72,7 @@ export default function AdminLogin() {
               className="object-contain"
             />
           </div>
-          <h1 className="text-3xl font-bold text-[#C02026]">SPARC Admin</h1>
+          <h1 className="text-3xl font-bold text-[#4f8cff]">SPARC Admin</h1>
           <p className="text-gray-600 mt-2">Sign in to continue</p>
         </div>
 
@@ -93,7 +93,7 @@ export default function AdminLogin() {
               type="email"
               value={credentials.email}
               onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none transition"
               placeholder="Enter your email"
               required
             />
@@ -108,7 +108,7 @@ export default function AdminLogin() {
               type="password"
               value={credentials.password}
               onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#CF8420] focus:border-transparent outline-none transition"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#22d3ee] focus:border-transparent outline-none transition"
               placeholder="Enter your password"
               required
             />
@@ -117,7 +117,7 @@ export default function AdminLogin() {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#CF8420] hover:bg-[#CF8420]/90 text-white font-semibold py-3 rounded-lg transition-all disabled:opacity-50"
+            className="w-full bg-[#22d3ee] hover:bg-[#22d3ee]/90 text-[#06121f] font-semibold py-3 rounded-lg transition-all disabled:opacity-50"
           >
             {loading ? "Signing in..." : "Sign In"}
           </Button>

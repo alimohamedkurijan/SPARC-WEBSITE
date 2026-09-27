@@ -47,9 +47,9 @@ export default function TeamSection() {
       <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#C02026] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#4f8cff] mb-4">
             Meet The{" "}
-            <span className="text-[#CF8420]">Team</span>
+            <span className="text-[#22d3ee]">Team</span>
           </h2>
           <p className="text-xl text-foreground/70">
             The passionate people behind SPARC
@@ -65,7 +65,7 @@ export default function TeamSection() {
             {members.map((member) => (
               <div
                 key={member.id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-transparent hover:border-[#CF8420] transition-all duration-300 hover:shadow-xl group"
+                className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-transparent hover:border-[#22d3ee] transition-all duration-300 hover:shadow-xl group"
               >
                 {/* Photo */}
                 <div className="relative h-64 bg-gray-200 overflow-hidden">
@@ -81,7 +81,7 @@ export default function TeamSection() {
                       }}
                     />
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#C02026] to-[#CF8420] flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#4f8cff] to-[#22d3ee] flex items-center justify-center">
                       <span className="text-white text-6xl font-bold">
                         {member.name.charAt(0)}
                       </span>
@@ -92,7 +92,7 @@ export default function TeamSection() {
                 {/* Info */}
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-[#CF8420] font-semibold text-sm mb-3">{member.role}</p>
+                  <p className="text-[#22d3ee] font-semibold text-sm mb-3">{member.role}</p>
                   {member.bio && (
                     <p className="text-gray-600 text-sm line-clamp-3">{member.bio}</p>
                   )}
@@ -103,7 +103,7 @@ export default function TeamSection() {
                       {member.email && (
                         <a
                           href={`mailto:${member.email}`}
-                          className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-[#CF8420] hover:text-white transition-colors"
+                          className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-[#22d3ee] hover:text-[#06121f] transition-colors"
                           title="Email"
                         >
                           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
