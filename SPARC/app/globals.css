@@ -69,6 +69,10 @@
   --cyan: #22d3ee;          /* primary neon */
   --blue: #4f8cff;          /* secondary neon */
   --violet: #a78bfa;        /* accent neon */
+  /* Fonts (loaded via <link> in layout, not next/font) */
+  --font-display: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Chakra Petch", ui-sans-serif, system-ui, sans-serif;
+  --font-pixel: "Press Start 2P", ui-monospace, monospace;
   /* dark tokens kept for the arcade GAME screens */
   --retro-panel: #0f1826;
   --retro-ink: #e9f1f7;
